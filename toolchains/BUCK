@@ -1,0 +1,7 @@
+load("@prelude//toolchains:demo.bzl", "system_demo_toolchains")
+
+system_demo_toolchains()
+
+load(":verilator.bzl", "system_verilator_toolchain", "verilator_simulator_toolchain")
+system_verilator_toolchain(name = "verilator")
+verilator_simulator_toolchain(name = "simulator", visibility = ["PUBLIC"]) # use system verilator to simulate

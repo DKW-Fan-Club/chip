@@ -1,0 +1,27 @@
+load("//rules:sv.bzl", "sv_module", "sv_module_test")
+
+sv_module(
+    name = "adder",
+    srcs = ["adder.sv"],
+    top = "adder",
+    deps = []
+)
+
+sv_module(
+    name = "basic_tb",
+    srcs = ["tb.sv"],
+    top = "tb",
+    deps = [":adder"]
+)
+
+sv_module_test(
+    name = "adder_basic_test",
+    module = ":basic_tb"
+)
+
+test_suite(
+    name = "all",
+    tests = [
+        ":adder_basic_test"
+    ]
+)

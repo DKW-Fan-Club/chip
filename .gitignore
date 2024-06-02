@@ -1,0 +1,4 @@
+# Exclude verilator outputs
+obj_dir/
+# Exclude buck outputs
+buck-out/

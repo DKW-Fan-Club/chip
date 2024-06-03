@@ -16,7 +16,7 @@ endtask
 adder dut(.s(s_actual), .cout(cout_actual), .*);
 
 initial begin
-    $dumpfile("dump.vcd");
+    // $dumpfile("dump.vcd");
     $dumpvars(0, tb);
     // insert your test vector here
     vec = new();

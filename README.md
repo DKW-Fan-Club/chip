@@ -6,7 +6,7 @@ You should install the following items:
 2. Verilator
 3. GTKWave
 
-Make sure that the following commands succeed: `which rust`, `which verilator`, `which gtkwave`. If on windows, please use WSL.
+Make sure that the following commands succeed: `which cargo`, `which verilator`, `which gtkwave`. If on windows, please use WSL.
 
 Next, install `buck2` following the [official guide](https://buck2.build/docs/getting_started/).
 

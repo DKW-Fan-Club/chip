@@ -36,8 +36,8 @@ def _verilator_binary_impl(ctx):
     )
     return [
         DefaultInfo(
-            default_output = executable,
-            other_outputs = [folder]
+            default_output = folder,
+            other_outputs = [executable]
         ),
         RunInfo(
             [executable]

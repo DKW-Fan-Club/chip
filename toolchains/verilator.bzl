@@ -22,14 +22,14 @@ system_verilator_toolchain = rule(
 )
 
 def _verilator_generate_sim_executable(toolchain):
-    def _generate(ctx, folder, module_deps, module_top, executable):
+    def _generate(ctx, folder, module_deps, module_top, executable, generate_waveforms):
+        waveforms_args = ["--trace", "--trace-structs"] if generate_waveforms else []
         ctx.actions.run(
             [
                 toolchain[VerilatorToolchainInfo].verilator_binary,
                 "-cc",
                 toolchain[VerilatorToolchainInfo].default_options,
-                "--trace",
-                "--trace-structs",
+                waveforms_args,
                 "--timing",
                 "--binary",
                 "--main",

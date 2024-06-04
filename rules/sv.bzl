@@ -1,5 +1,7 @@
 load("@toolchains//:simulator.bzl", "SimulatorToolchainInfo")
 load("@prelude//:rules.bzl", "sh_test")
+load(":waveform_visualizer.bzl", "waveform_visualizer")
+
 VerilogInfo = provider(
     fields = ["tset"]
 )
@@ -44,19 +46,23 @@ def _sv_module_impl(ctx):
     ]
 
 def _sv_simulation_impl(ctx):
-    folder = ctx.actions.declare_output("obj_dir", dir=True)
+    waveform_folder = ctx.actions.declare_output("obj_dir", dir=True)
     executable = ctx.actions.declare_output(ctx.attrs.out)
     ctx.attrs._simulator_toolchain[SimulatorToolchainInfo].generate_sim_executable(
         ctx,
-        folder,
+        waveform_folder,
         ctx.attrs.module[VerilogInfo].tset,
         ctx.attrs.module[VerilogTopInfo].top,
-        executable
+        executable,
+        ctx.attrs.generate_waveforms
     )
     return [
         DefaultInfo(
             default_output = executable,
-            other_outputs = [folder]
+            other_outputs = [waveform_folder],
+            sub_targets = {
+                "waveform_folder": [DefaultInfo(default_output = waveform_folder)]
+            }
         ),
         RunInfo(
             [executable]
@@ -85,15 +91,17 @@ sv_simulation = rule(
     attrs = {
         "module": attrs.dep(providers = [VerilogInfo, VerilogTopInfo]),
         "out": attrs.string(),
+        "generate_waveforms": attrs.bool(default = False),
         "_simulator_toolchain": attrs.toolchain_dep(default = "toolchains//:simulator")
     }
 )
 
-def sv_module_test(name=None, module=None):
+def sv_module_test(name=None, module=None, generate_waveforms=True):
     sv_simulation(
         name = name + "_binary",
         module = module,
-        out = "atb"
+        out = "atb",
+        generate_waveforms = generate_waveforms
     )
 
     sh_test(
@@ -102,3 +110,9 @@ def sv_module_test(name=None, module=None):
         deps = [":" + name + "_binary"]
     )
     
+    if generate_waveforms:
+        waveform_visualizer(
+            name = "{}_visualize".format(name),
+            input_files = ":{}_binary[waveform_folder]".format(name),
+            out = "vis"
+        )

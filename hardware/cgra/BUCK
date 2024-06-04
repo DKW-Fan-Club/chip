@@ -1,0 +1,32 @@
+load("//rules:sv.bzl", "sv_module", "sv_module_test")
+load("//rules:waveform_visualizer.bzl", "waveform_visualizer")
+
+sv_module(
+    name = "cgra",
+    srcs = ["cgra.sv"],
+    top = "cgra",
+    deps = [
+        "root//hardware/types:types",
+        "root//hardware/functional_unit:functional_unit",
+        "root//hardware/switchbox:switchbox"
+    ]
+)
+
+# sv_module(
+#     name = "basic_tb",
+#     srcs = ["tb.sv"],
+#     top = "tb",
+#     deps = [":cgra"]
+# )
+
+# sv_module_test(
+#     name = "basic_test",
+#     module = ":basic_tb"
+# )
+
+# test_suite(
+#     name = "all_tests",
+#     tests = [
+#         ":basic_test"
+#     ]
+# )

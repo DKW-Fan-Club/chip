@@ -20,3 +20,5 @@ Let's walk through a simple workflow: we wish to debug our `adder`.
 2. We'll see that an assertion failed. Uh oh! `buck2` tells us this is from the test suite called `adder_basic_test`.
 3. Run `buck2 run //hardware/adder:adder_basic_test_visualize`. This will open GTKWave, where you can explore the waveform and debug the issue.
 4. Find the issue, and fix the testbench. Re-run the tests, and they should pass!
+
+The existing BUCK configuration files should provide a reasonable idea of how to add dependencies / new modules, if you have questions ask Ryan.

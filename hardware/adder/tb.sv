@@ -26,9 +26,8 @@ initial begin
         send_vector();
         #1
         if(~(s_actual === (a & b & cin))) begin
-            $display("uh oh!");
+            $error("uh oh!");
         end
-        // assert(s_actual === (a & b & cin));
     end
 end
 

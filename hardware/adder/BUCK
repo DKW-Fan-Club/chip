@@ -21,7 +21,7 @@ sv_module_test(
 )
 
 test_suite(
-    name = "all",
+    name = "all_tests",
     tests = [
         ":adder_basic_test"
     ]

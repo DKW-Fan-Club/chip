@@ -4,8 +4,7 @@ load("//rules:waveform_visualizer.bzl", "waveform_visualizer")
 sv_module(
     name = "adder",
     srcs = ["adder.sv"],
-    top = "adder",
-    deps = []
+    top = "adder"
 )
 
 sv_module(

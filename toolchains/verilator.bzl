@@ -35,7 +35,7 @@ def _verilator_generate_sim_executable(toolchain):
                 "--main",
                 "--Mdir",
                 folder.as_output(),
-                module_deps.project_as_args("verilator"),
+                module_deps.project_as_args("verilator", ordering = "postorder"),
                 "--top",
                 module_top
             ],

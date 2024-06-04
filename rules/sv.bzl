@@ -19,9 +19,6 @@ def project_as_verilator(value: VerilogManifest):
 
 VerilogTset = transitive_set(args_projections = {"verilator": project_as_verilator})
 
-def build_tset_from_deps(ctx, deps):
-    return ctx.actions.tset(VerilogTset, value = VerilogManifest(srcs = []), children = [d[VerilogInfo].tset for d in ctx.attrs.deps])
-
 def _sv_library_impl(ctx):
     s = ctx.actions.tset(
         VerilogTset,
@@ -72,16 +69,16 @@ def _sv_simulation_impl(ctx):
 sv_library = rule(
     impl = _sv_library_impl,
     attrs = {
-        "deps": attrs.list(attrs.dep(providers = [VerilogInfo])),
-        "srcs": attrs.list(attrs.source())
+        "deps": attrs.list(attrs.dep(providers = [VerilogInfo]), default = []),
+        "srcs": attrs.list(attrs.source(), default = [])
     }
 )
 
 sv_module = rule(
     impl = _sv_module_impl,
     attrs = {
-        "deps": attrs.list(attrs.dep(providers = [VerilogInfo])),
-        "srcs": attrs.list(attrs.source()),
+        "deps": attrs.list(attrs.dep(providers = [VerilogInfo]), default = []),
+        "srcs": attrs.list(attrs.source(), default = []),
         "top": attrs.string() 
     }
 )

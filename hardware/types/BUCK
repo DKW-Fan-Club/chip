@@ -1,0 +1,7 @@
+load("//rules:sv.bzl", "sv_library")
+
+sv_library(
+    name = "types",
+    srcs = ["types.sv"],
+    visibility = ["root//hardware/..."]
+)

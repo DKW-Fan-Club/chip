@@ -1,5 +1,4 @@
 load("//rules:sv.bzl", "sv_module", "sv_module_test")
-load("//rules:waveform_visualizer.bzl", "waveform_visualizer")
 
 sv_module(
     name = "cgra",

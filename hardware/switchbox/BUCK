@@ -1,5 +1,4 @@
 load("//rules:sv.bzl", "sv_module", "sv_module_test")
-load("//rules:waveform_visualizer.bzl", "waveform_visualizer")
 
 sv_module(
     name = "switchbox",
@@ -7,14 +6,15 @@ sv_module(
     top = "switchbox",
     deps = [
         "root//hardware/types:types",
-    ]
+    ],
+    visibility = ["root//hardware/cgra:cgra"]
 )
 
 # sv_module(
 #     name = "basic_tb",
-#     srcs = ["tb.sv"],
+#     srcs = ["basic_tb.sv"],
 #     top = "tb",
-#     deps = [":cgra"]
+#     deps = [":switchbox"]
 # )
 
 # sv_module_test(

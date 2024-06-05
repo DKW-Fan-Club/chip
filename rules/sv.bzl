@@ -93,23 +93,33 @@ sv_simulation = rule(
     }
 )
 
-def sv_module_test(name=None, module=None, generate_waveforms=True):
+def sv_module_test(name=None, srcs=[], deps=[], top=None, generate_waveforms = True):
+    module_name = "{}_module".format(name)
+    sv_module(
+        name=module_name,
+        srcs=srcs,
+        top=top,
+        deps=deps
+    )
+
+    simulation_name = "{}_binary".format(name)
     sv_simulation(
-        name = name + "_binary",
-        module = module,
-        out = "atb",
+        name = simulation_name,
+        module = ":{}".format(module_name),
+        out = "tb",
         generate_waveforms = generate_waveforms
     )
 
     sh_test(
         name = name,
-        test = ":" + name + "_binary",
-        deps = [":" + name + "_binary"]
+        test = ":" + simulation_name,
+        deps = [":" + simulation_name]
     )
     
     if generate_waveforms:
+        waveform_name = "{}_visualize".format(name)
         waveform_visualizer(
-            name = "{}_visualize".format(name),
-            input_files = ":{}_binary[waveform_folder]".format(name),
+            name = waveform_name,
+            input_files = ":{}[waveform_folder]".format(simulation_name),
             out = "vis"
         )

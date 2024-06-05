@@ -10,21 +10,16 @@ sv_module(
     visibility = ["root//hardware/cgra:cgra"]
 )
 
-# sv_module(
-#     name = "basic_tb",
-#     srcs = ["basic_tb.sv"],
+# sv_module_test(
+#     name = "tb_basic_functionality",
+#     srcs = ["tb_basic_functionality.sv"],
 #     top = "tb",
 #     deps = [":functional_unit"]
-# )
-
-# sv_module_test(
-#     name = "basic_test",
-#     module = ":basic_tb"
 # )
 
 # test_suite(
 #     name = "all_tests",
 #     tests = [
-#         ":basic_test"
+#         ":tb_basic_functionality"
 #     ]
 # )

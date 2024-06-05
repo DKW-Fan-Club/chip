@@ -11,21 +11,16 @@ sv_module(
     ]
 )
 
-# sv_module(
-#     name = "basic_tb",
-#     srcs = ["basic_tb.sv"],
-#     top = "tb",
-#     deps = [":cgra"]
-# )
-
 # sv_module_test(
-#     name = "basic_test",
-#     module = ":basic_tb"
+#     name = "tb_basic_functionality",
+#     srcs = ["tb_basic_functionality.sv"],
+#     top = "tb",
+#     deps = [":functional_unit"]
 # )
 
 # test_suite(
 #     name = "all_tests",
 #     tests = [
-#         ":basic_test"
+#         ":tb_basic_functionality"
 #     ]
 # )

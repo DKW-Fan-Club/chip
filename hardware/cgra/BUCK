@@ -13,7 +13,7 @@ sv_module(
 
 # sv_module(
 #     name = "basic_tb",
-#     srcs = ["tb.sv"],
+#     srcs = ["basic_tb.sv"],
 #     top = "tb",
 #     deps = [":cgra"]
 # )

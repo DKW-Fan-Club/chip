@@ -3,8 +3,6 @@ root = .
 prelude = prelude
 toolchains = toolchains
 none = none
-# hardware = hardware
-# rules = rules
 
 [cell_aliases]
 config = prelude
@@ -13,7 +11,6 @@ fbcode = none
 fbsource = none
 fbcode_macros = none
 buck = none
-# hardware = hardware
 
 [parser]
 target_platform_detector_spec = target:root//...->prelude//platforms:default

@@ -1,0 +1,30 @@
+load("//rules:sv.bzl", "sv_module", "sv_module_test")
+load("//rules:waveform_visualizer.bzl", "waveform_visualizer")
+
+sv_module(
+    name = "MODULE_NAME",
+    srcs = ["MODULE_NAME.sv"],
+    top = "MODULE_NAME",
+    deps = [
+        "root//hardware/types:types",
+    ]
+)
+
+sv_module(
+    name = "basic_tb",
+    srcs = ["basic_tb.sv"],
+    top = "tb",
+    deps = [":MODULE_NAME"]
+)
+
+sv_module_test(
+    name = "basic_test",
+    module = ":basic_tb"
+)
+
+test_suite(
+    name = "all_tests",
+    tests = [
+        ":basic_test"
+    ]
+)

@@ -1,9 +1,9 @@
 load("//rules:sv.bzl", "sv_module", "sv_module_test")
 
 sv_module(
-    name = "MODULE_NAME",
-    srcs = ["MODULE_NAME.sv"],
-    top = "MODULE_NAME",
+    name = "adder",
+    srcs = ["adder.sv"],
+    top = "adder",
     deps = [
         "root//hardware/types:types",
     ]
@@ -13,7 +13,7 @@ sv_module_test(
     name = "tb_basic_functionality",
     srcs = ["tb_basic_functionality.sv"],
     top = "tb",
-    deps = [":MODULE_NAME"]
+    deps = [":adder"]
 )
 
 test_suite(

@@ -17,9 +17,9 @@ sv_module(
 #     deps = [":switchbox"]
 # )
 
-test_suite(
-    name = "all_tests",
-    tests = [
-        ":tb_basic_functionality"
-    ]
-)
+# test_suite(
+#     name = "all_tests",
+#     tests = [
+#         ":tb_basic_functionality"
+#     ]
+# )

@@ -61,3 +61,16 @@ sv_module_test(
 Then, add `":tb_name_of_test"` to the array of tests for the `all_tests` group. For clarity, it is recommended to always have the `tb_` prefix, although it's not required.
 
 Unless you provide `generate_waveforms = False` to `sv_module_test`, for any test, you can run `buck2 run //hardware/module:name_of_test_visualize` to see the waveforms after running the test. Note that tests may run faster if you don't generate waveforms.
+
+### Running only a specific test
+If you want to run only one test, instead of using `buck2 test //hardware/your_module:all_tests`, you can run `buck2 test //hardware/your_module:tb_name_of_test`.
+
+### Creating additional test groups
+As you saw previously, the `all_tests` suite contains every test. You can copy the `test_suite` block with a different name to create a separate group of tests. For example:
+```
+test_suite(
+    name = "name_of_group",
+    tests = [":tb_some_test", ":tb_other_test"]
+)
+```
+You can run all of these tests with `buck2 test //hardware/your_module:name_of_group`.

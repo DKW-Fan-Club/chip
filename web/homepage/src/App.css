@@ -1,0 +1,67 @@
+body {
+  background-color: #482D61;
+  font-family: district-pro, serif;
+  color: white;
+  font-size: 1.35rem;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  background-color: #BC75FF;
+  /* font-style: italic; */
+}
+
+.logo {
+  transform: rotate(-36deg);
+  width: 6rem;
+}
+
+header, main {
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.introHeaderContent {
+  max-width: 50rem;
+  padding-bottom: 40px;
+}
+
+.introHeader h1 {
+  font-size: 3.25rem;
+}
+
+@media screen and (max-width: 500px) {
+  .introHeader h1 {
+    font-size: 2.75rem;
+  }
+  body {
+    font-size: 1.2rem;
+  }
+}
+
+.introLearnMore {
+  border-bottom: 3px solid white;
+  padding-bottom: 7px;
+  /* font-style: italic; */
+  text-decoration: none;
+  padding-top: 5px;
+}
+
+.introHeader {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo {
+  padding-top: 40px;
+}
+
+.arrow {
+  font-family: sans-serif;
+}

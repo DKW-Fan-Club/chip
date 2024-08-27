@@ -9,7 +9,7 @@ You should install the following items:
 
 Make sure that the following commands succeed: `which cargo`, `which verilator`, `which gtkwave`, `which g++`. If on Windows, please use WSL.
 
-Next, install `buck2` following the [official guide](https://buck2.build/docs/getting_started/).
+Next, install `buck2` following the [official guide](https://buck2.build/docs/about/getting_started/).
 
 Clone this repository and then run:
 ```
